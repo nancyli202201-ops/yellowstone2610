@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#183b33" />
+    <meta name="description" content="Explore eight remarkable places in Yellowstone National Park from home, with scenic films and an interactive guide." />
+    <title>Yellowstone From Home — Explore the park, your way</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand" aria-label="Yellowstone From Home">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M4 28 14 11l5 8 4-5 9 14H4Z" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"/><path d="M12 28c2-4 5-6 9-7" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/><circle cx="27" cy="8" r="2" fill="currentColor"/></svg></span>
+          <span>Yellowstone <em>From Home</em></span>
+        </div>
+        <div class="topbar-center"><span class="topbar-dot"></span> AN EXPLORATION FOR EVERYONE</div>
+        <div class="topbar-right"><span class="edition">INTERACTIVE FIELD GUIDE</span><span class="edition-rule"></span><span class="edition">EST. 1872</span></div>
+      </header>
+
+      <main id="main-content" class="main-layout">
+        <section class="explore-area" aria-label="Explore Yellowstone">
+          <div id="map-view" class="map-view">
+            <div id="map" role="application" aria-label="Interactive map of Yellowstone National Park with eight places to explore"></div>
+            <div class="map-wash" aria-hidden="true"></div>
+            <div class="map-intro">
+              <div class="eyebrow"><span class="tiny-line"></span> WELCOME TO THE PARK</div>
+              <h1>Wonders worth<br /><i>wandering for.</i></h1>
+              <p>Explore Yellowstone from wherever you are. Choose a place on the map, watch its story unfold, and ask your guide along the way.</p>
+            </div>
+            <div class="place-panel">
+              <div class="panel-heading">
+                <div><span class="mini-label">THE PARK, AT YOUR PACE</span><h2>Choose a place</h2></div>
+                <span class="place-count">08 PLACES</span>
+              </div>
+              <div id="place-list" class="place-list" aria-label="Places to explore"></div>
+            </div>
+            <div class="map-footer"><span class="map-legend"><span class="legend-pin"></span> SELECT A MARKER TO EXPLORE</span><span class="map-attribution-note">Map data © OpenStreetMap contributors</span></div>
+          </div>
+
+          <div id="detail-view" class="detail-view" hidden>
+            <div class="detail-topline"><button id="back-button" class="back-button" type="button"><span aria-hidden="true">←</span> Back to map</button><span id="detail-position" class="detail-position"></span></div>
+            <div class="detail-header"><div id="detail-region" class="eyebrow"></div><h1 id="detail-title"></h1><p id="detail-description"></p></div>
+            <div class="video-wrap"><div id="video-frame" class="video-frame"></div></div>
+            <div class="video-caption"><div><span class="mini-label">FIELD FILM</span><p id="video-credit"></p></div><a id="youtube-link" href="#" target="_blank" rel="noopener noreferrer">Watch on YouTube <span aria-hidden="true">↗</span></a></div>
+            <div class="detail-bottom"><div class="detail-note"><span class="detail-note-icon" aria-hidden="true">✦</span><div><span class="mini-label">A CLOSER LOOK</span><p id="detail-fact"></p></div></div><div class="detail-navigation"><button id="previous-place" type="button" aria-label="Previous place">←</button><span id="detail-navigation-label"></span><button id="next-place" type="button" aria-label="Next place">→</button></div></div>
+          </div>
+        </section>
+
+        <aside class="guide" aria-label="Virtual Yellowstone guide">
+          <div class="guide-header"><div class="guide-heading"><div class="guide-icon" aria-hidden="true">✳</div><div><span class="mini-label">YOUR COMPANION</span><h2>Ask your guide</h2></div></div><span class="prototype-badge">PREVIEW</span></div>
+          <div class="guide-intro"><span class="guide-status"><span></span> HERE WITH YOU</span><p>Curious about a geyser, a trail, or what you’re seeing? Ask away.</p></div>
+          <div id="conversation" class="conversation" aria-live="polite" aria-label="Guide conversation"></div>
+          <div class="guide-bottom"><div class="suggestion-label">TRY ASKING</div><div id="suggestions" class="suggestions"></div><form id="chat-form" class="chat-form"><label class="sr-only" for="chat-input">Ask the guide a question</label><input id="chat-input" type="text" placeholder="Ask me anything about the park…" autocomplete="off" /><button id="voice-button" class="icon-button" type="button" aria-label="Speak your question" title="Speak your question"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5m-4 0h8"/></svg></button><button class="send-button" type="submit" aria-label="Send question"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 14-7-5 14-2.5-6.5L5 12Z"/><path d="M11.5 12.5 19 5"/></svg></button></form><p id="voice-status" class="voice-status" role="status"></p><p class="guide-disclaimer">A guided preview with prepared answers. Voice features depend on your browser.</p></div>
+        </aside>
+      </main>
+    </div>
+  </body>
+</html>
