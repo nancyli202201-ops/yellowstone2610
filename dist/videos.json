@@ -1,0 +1,44 @@
+{
+  "old-faithful": {
+    "type": "youtube",
+    "url": "https://www.youtube.com/watch?v=wilkPE-1XwU",
+    "credit": "4K eruption film · Volkan Yuksel"
+  },
+  "grand-prismatic": {
+    "type": "youtube",
+    "url": "https://www.youtube.com/watch?v=635UZAPkElg",
+    "credit": "4K scenic film · Amazing Places on Our Planet"
+  },
+  "mammoth": {
+    "type": "youtube",
+    "url": "https://www.youtube.com/watch?v=oz5CvNRoEf8",
+    "credit": "4K walking film · Scenic walking film"
+  },
+  "grand-canyon": {
+    "type": "youtube",
+    "url": "https://www.youtube.com/watch?v=GzxlyTJD66Q",
+    "credit": "4K scenic film · Amazing Places on Our Planet"
+  },
+  "hayden": {
+    "type": "youtube",
+    "url": "https://www.youtube.com/watch?v=SA23J5n1yPA",
+    "startSeconds": 2968,
+    "credit": "4K scenic drive · Hayden Valley chapter · World of Drives"
+  },
+  "yellowstone-lake": {
+    "type": "youtube",
+    "url": "https://www.youtube.com/watch?v=SA23J5n1yPA",
+    "startSeconds": 1471,
+    "credit": "4K scenic drive · lake chapter · World of Drives"
+  },
+  "norris": {
+    "type": "youtube",
+    "url": "https://www.youtube.com/watch?v=7v1uOUMdUB8",
+    "credit": "4K 60fps walking tour · Prowalk Tours"
+  },
+  "fountain": {
+    "type": "youtube",
+    "url": "https://www.youtube.com/watch?v=RJFGtSLT8kk",
+    "credit": "Walking tour · resolution varies · Voyager’s Diary"
+  }
+}
